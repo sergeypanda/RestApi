@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "E:\\1. Job tuts\\git\\python\\Django"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html"
+		}
+	}
+}
