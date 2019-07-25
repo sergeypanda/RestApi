@@ -2,6 +2,7 @@
 ULRS
 
 'api/v1/recipe/' - List of recipies/Create a recipe
+
 'api/v1/recipe/{id}' - get/update/delete a recipe
 
 'api/v1/recipe?user_id={id}' -  get recipe by user_id
