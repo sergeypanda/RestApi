@@ -25,12 +25,14 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class StepSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="recipe:step-detail")
     class Meta:
         model = Step
         fields = ('id', 'url', 'step_text')
-
+        
 
 class IngredientSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="recipe:ingredient-detail")
     class Meta:
         model = Ingredient
         fields = ('id', 'url', 'text')
@@ -39,6 +41,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     steps = StepSerializer(many=True, required=False)
     ingredients = IngredientSerializer(many=True, required=False)
+    url = serializers.HyperlinkedIdentityField(view_name="recipe:recipe-detail")
 
     class Meta:
         model = Recipe
@@ -47,7 +50,7 @@ class RecipeSerializer(serializers.ModelSerializer):
 
 
     #This function redefinition will allow us to add full object of Recipe with steps and ingredients
-    #
+
     def create(self, validated_data):
 
         steps_data = validated_data.pop('steps')

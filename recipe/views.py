@@ -10,13 +10,11 @@ class RecipeView(viewsets.ModelViewSet):
     # this will allow us to access recipies by user id  like this /api/v1/recipe?user_id={id}
     # Because Recipe has 1-1 relationship with User this will return us an array with 1 element 
     def get_queryset(self):
-        
-        user_id = self.request.query_params.get('user_id')
-
-        if not user_id:
-            return Recipe.objects.all()
-        else:
+        user_id = self.request.GET.get("user_id")
+        if user_id is not None:
             return Recipe.objects.filter(creator_id=user_id)
+        else:
+            return Recipe.objects.all()
     
     
 class StepView(viewsets.ModelViewSet):
